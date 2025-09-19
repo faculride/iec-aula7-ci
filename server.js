@@ -103,7 +103,17 @@ app.use(express.json());
 
 // banco em memória
 const db = new Map(); // id -> { id, name, quantity }
-let seq = 1;
+
+// dados iniciais para evitar lista vazia (útil p/ testes e documentação)
+const initialItems = [
+  { id: "1", name: "caderno", quantity: 5 }
+];
+
+initialItems.forEach((item) => {
+  db.set(item.id, item);
+});
+
+let seq = initialItems.length + 1;
 
 // Swagger UI
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(openapi));
