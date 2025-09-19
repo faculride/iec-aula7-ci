@@ -37,6 +37,13 @@ export default [
   // ajustes específicos para testes
   {
     files: ["tests/**/*.test.js"],
+    languageOptions: {
+      globals: {
+        describe: "readonly",
+        it: "readonly",
+        expect: "readonly"
+      }
+    },
     rules: {
       "no-console": "off"
     }
